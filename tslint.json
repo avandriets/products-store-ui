@@ -3,10 +3,138 @@
     "node_modules/@nrwl/workspace/src/tslint",
     "node_modules/codelyzer"
   ],
-  "linterOptions": {
-    "exclude": ["**/*"]
-  },
   "rules": {
+    "semicolon": [true, "always"],
+    "no-unused-variable": true,
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "property-declaration"
+    ],
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "comment-type": [
+      true,
+      "singleline",
+      "doc"
+    ],
+    "align": [
+      true,
+      "parameters",
+      "members",
+      "statements",
+      "elements"
+    ],
+    "no-angle-bracket-type-assertion": false,
+    "no-boolean-literal-compare": true,
+    "no-consecutive-blank-lines": [true, 1],
+    "no-irregular-whitespace": true,
+    "one-line": [
+      true,
+      "check-catch",
+      "check-finally",
+      "check-else",
+      "check-open-brace",
+      "check-whitespace"
+    ],
+    "newline-before-return": true,
+    "no-trailing-whitespace": true,
+    "import-spacing": true,
+    "space-before-function-paren": [
+      true,
+      {
+        "anonymous": "never",
+        "asyncArrow": "always",
+        "constructor": "never",
+        "method": "never",
+        "named": "never"
+      }
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "curly": true,
+    "cyclomatic-complexity": [true, 20],
+    "encoding": true,
+    "restrict-plus-operands": true,
+    "strict-boolean-expressions": [
+      false,
+      "allow-null-union",
+      "allow-undefined-union",
+      "allow-string",
+      "allow-enum",
+      "allow-number"
+    ],
+    "strict-type-predicates": true,
+    "switch-default": true,
+    "no-invalid-template-strings": true,
+    "prefer-template": true,
+    "object-literal-shorthand": true,
+    "prefer-object-spread": true,
+    "no-default-export": true,
+    "no-default-import": true,
+    "no-duplicate-variable": [true, "check-parameters"],
+    "no-unnecessary-callback-wrapper": true,
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "only-arrow-functions": [true, "allow-named-functions"],
+    "no-void-expression": [true, "ignore-arrow-function-shorthand"],
+    "no-parameter-reassignment": true,
+    "no-this-assignment": [true, {"allow-destructuring": true}],
+    "no-invalid-this": [true, "check-function-in-method"],
+    "prefer-readonly": false,
+    "linebreak-style": [false, "LF"],
+    "no-duplicate-imports": true,
+    "no-require-imports": true,
+    "unnecessary-constructor": true,
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "arrays": "always",
+          "exports": "always",
+          "functions": "always",
+          "imports": "always",
+          "objects": "always",
+          "typeLiterals": "always"
+        },
+        "esSpecCompliant": true
+      }
+    ],
+    "space-within-parens": [false, 1],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-postbrace"
+    ],
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
@@ -16,7 +144,7 @@
     "forin": true,
     "import-blacklist": [true, "rxjs/Rx"],
     "interface-over-type-literal": true,
-    "member-access": false,
+    "member-access": [true, "check-accessor", "check-constructor"],
     "member-ordering": [
       true,
       {
@@ -26,6 +154,15 @@
           "static-method",
           "instance-method"
         ]
+      }
+    ],
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "lowercase-last",
+        "module-source-path": "full"
       }
     ],
     "no-arg": true,
@@ -50,13 +187,12 @@
     "object-literal-sort-keys": false,
     "prefer-const": true,
     "radix": true,
-    "triple-equals": [true, "allow-null-check"],
+    "triple-equals": [true, "allow-undefined-check", "allow-null-check"],
     "unified-signatures": true,
     "variable-name": false,
     "nx-enforce-module-boundaries": [
       true,
       {
-        "enforceBuildableLibDependency": true,
         "allow": [],
         "depConstraints": [
           {
