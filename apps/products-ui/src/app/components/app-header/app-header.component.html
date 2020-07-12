@@ -1,0 +1,68 @@
+<mat-toolbar color="primary">
+
+  <mat-toolbar-row>
+
+    <span class="page-title"
+          (click)="onTitle()"> Spectrus WEB </span>
+
+    <div fxFlex
+         fxLayout
+         fxLayoutAlign="flex-end">
+
+      <div fxLayout
+           fxLayoutGap="20px">
+
+        <div fxHide.xs>
+          <a mat-button
+             [routerLink]="['/']">
+            <mat-icon>apps</mat-icon>
+          </a>
+        </div>
+
+<!--        <div fxHide.xs-->
+<!--             data-test-id="themeSwitcher">-->
+<!--          <spectrus-web-theme-picker></spectrus-web-theme-picker>-->
+<!--        </div>-->
+
+        <div fxHide.xs
+             data-test-id="helpIcon">
+          <button mat-icon-button>
+            <mat-icon>help_outline</mat-icon>
+          </button>
+        </div>
+
+        <div>
+
+          <button mat-icon-button
+                  [matMenuTriggerFor]="auth"
+                  data-test-id="userIcon">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+
+          <mat-menu #auth="matMenu">
+            <button mat-menu-item>
+              <span data-test-id="userCreds">{{ user.name }} ({{ user.email }})</span>
+            </button>
+
+            <button mat-menu-item
+                    (click)="onSettings()">
+              <mat-icon>settings</mat-icon>
+              <span>Settings</span>
+            </button>
+
+            <button mat-menu-item
+                    (click)="logout()">
+              <mat-icon data-test-id="exitApp">exit_to_app</mat-icon>
+              <span>Sign out</span>
+            </button>
+          </mat-menu>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </mat-toolbar-row>
+
+</mat-toolbar>

@@ -1,0 +1,68 @@
+<spectrus-web-error [ngSwitch]="type">
+
+  <ng-container image>
+    <div>
+      <mat-icon *ngSwitchCase="'403'">lock</mat-icon>
+      <mat-icon *ngSwitchCase="'404'">link_off</mat-icon>
+      <mat-icon *ngSwitchDefault>error_outline</mat-icon>
+    </div>
+  </ng-container>
+
+  <ng-container title>
+    <h1>
+      <ng-container *ngSwitchCase="'403'">
+        403: You shall not pass!
+      </ng-container>
+      <ng-container *ngSwitchCase="'404'">
+        404: Uh oh! Something is missing here.
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        Oops! What happened?
+      </ng-container>
+    </h1>
+  </ng-container>
+
+  <ng-container description>
+    <div *ngSwitchCase="'403'"
+         fxLayout="column"
+         fxLayoutAlign="center center">
+      <div class="mat-subheading-2">We're sorry, you are not authorized to access this page.</div>
+      <div class="mat-subheading-2">Try signing in or checking your permissions.</div>
+    </div>
+    <div *ngSwitchCase="'404'"
+         fxLayout="column"
+         fxLayoutAlign="center center">
+      <div class="mat-subheading-2">We're sorry, the page you requested could not be found.</div>
+      <div class="mat-subheading-2">We recommend going back to the homepage.</div>
+    </div>
+    <div *ngSwitchDefault
+         fxLayout="column"
+         fxLayoutAlign="center center">
+      <div class="mat-subheading-2">We're sorry, but something went wrong.</div>
+      <div class="mat-subheading-2">We recommend reloading or going back to the homepage.</div>
+    </div>
+  </ng-container>
+
+  <ng-container action>
+
+    <a *ngIf="type !== '403'"
+       data-test-id="actionPrimary"
+       mat-flat-button
+       color="accent"
+       class="m-16"
+       [routerLink]="['/']">
+      Back to homepage
+    </a>
+
+    <a mat-flat-button
+       data-test-id="actionSecondary"
+       color="accent"
+       class="m-16"
+       href="https://acd.com/support"
+       target="_blank">
+      Need help?
+    </a>
+
+  </ng-container>
+
+</spectrus-web-error>

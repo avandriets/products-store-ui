@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noUnusedLocals": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -15,7 +16,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@products-store-ui/ui": ["libs/ui/src/index.ts"],
+      "@products-store-ui/products-auth": ["libs/products-auth/src/index.ts"],
+      "@products-store-ui/products-core": ["libs/products-core/src/index.ts"],
+      "@products-store-ui/configuration": ["libs/configuration/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,0 +1,7 @@
+<ng-container *ngIf="error?.message; else message">
+  {{ error.message }}
+</ng-container>
+
+<ng-template #message>
+  Unknown error occurred
+</ng-template>

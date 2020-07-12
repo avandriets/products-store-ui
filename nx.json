@@ -25,6 +25,18 @@
     "products-ui-e2e": {
       "tags": [],
       "implicitDependencies": ["products-ui"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "products-auth": {
+      "tags": []
+    },
+    "products-core": {
+      "tags": []
+    },
+    "configuration": {
+      "tags": []
     }
   }
 }

@@ -1,0 +1,51 @@
+<div fxFlexFill>
+  <div *ngIf="aside$ | async"
+        fxLayout="column"
+        [fxFlex]="(isAsideCollapsed$ | async) ? '200px' : '64px'"
+        class="left-side-panel">
+
+    <router-outlet name="aside"
+                   data-test-id="asideBody">
+    </router-outlet>
+
+    <div fxFlex></div>
+
+    <mat-divider></mat-divider>
+
+    <mat-nav-list [ngSwitch]="isAsideCollapsed$ | async">
+
+      <div fxLayoutAlign="end">
+
+        <button *ngSwitchCase="true"
+          mat-icon-button
+          (click)="expandAside()">
+
+          <mat-icon>
+            keyboard_arrow_left
+          </mat-icon>
+
+        </button>
+
+        <button *ngSwitchDefault
+          mat-icon-button
+          (click)="collapseAside()">
+
+          <mat-icon>
+            keyboard_arrow_right
+          </mat-icon>
+
+        </button>
+
+      </div>
+
+    </mat-nav-list>
+
+  </div>
+
+  <div fxFlex>
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>

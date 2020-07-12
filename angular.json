@@ -86,10 +86,7 @@
               "apps/products-ui/tsconfig.app.json",
               "apps/products-ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/products-ui/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/products-ui/**/*"]
           }
         },
         "test": {
@@ -124,14 +121,137 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/products-ui-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/products-ui-e2e/**/*"
-            ]
+            "tsConfig": ["apps/products-ui-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/products-ui-e2e/**/*"]
           }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "products-store-ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/tsconfig.lib.json",
+              "libs/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "tsConfig": "libs/ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "products-auth": {
+      "projectType": "library",
+      "root": "libs/products-auth",
+      "sourceRoot": "libs/products-auth/src",
+      "prefix": "products-store-ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products-auth/tsconfig.lib.json",
+              "libs/products-auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/products-auth/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/products-auth/jest.config.js",
+            "tsConfig": "libs/products-auth/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/products-auth/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "products-core": {
+      "projectType": "library",
+      "root": "libs/products-core",
+      "sourceRoot": "libs/products-core/src",
+      "prefix": "products-store-ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products-core/tsconfig.lib.json",
+              "libs/products-core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/products-core/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/products-core/jest.config.js",
+            "tsConfig": "libs/products-core/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/products-core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "configuration": {
+      "projectType": "library",
+      "root": "libs/configuration",
+      "sourceRoot": "libs/configuration/src",
+      "prefix": "products-store-ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/configuration/tsconfig.lib.json",
+              "libs/configuration/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/configuration/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/configuration/jest.config.js",
+            "tsConfig": "libs/configuration/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/configuration/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }
