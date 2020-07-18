@@ -27,14 +27,14 @@
     <div *ngIf="!error"
          class="products-store-ui-container__body__loader__progress">
 
-      <products-store-ui-loader-component></products-store-ui-loader-component>
+      <products-store-ui-loader></products-store-ui-loader>
 
     </div>
 
     <div *ngIf="error"
          class="products-store-ui-container__body__loader__error">
 
-      <products-store-ui-error-placeholder-component [error]="error"></products-store-ui-error-placeholder-component>
+      <products-store-ui-error-placeholder [error]="error"></products-store-ui-error-placeholder>
 
     </div>
 

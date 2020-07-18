@@ -1,2 +1,2 @@
-export * from './layout.state';
+export * from './left-sidebar.state';
 export * from './notification.state';

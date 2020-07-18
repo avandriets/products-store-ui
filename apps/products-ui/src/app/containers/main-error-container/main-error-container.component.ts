@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'products-store-ui-app-error-container',
+  selector: 'products-store-ui-main-error-container',
   templateUrl: './main-error-container.component.html',
   styleUrls: ['./main-error-container.component.scss'],
 })

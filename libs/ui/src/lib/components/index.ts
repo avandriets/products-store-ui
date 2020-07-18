@@ -1,22 +1,22 @@
-import { ErrorPlaceholderComponent } from './error-placeholder-component/error-alert-component.component';
+import { ErrorPlaceholderComponent } from './error-placeholder/error-placeholder.component';
 import { ErrorComponent } from './error/error.component';
-import { UILayoutBodyComponent } from './layout-body/layout-body.component';
-import { UILayoutComponent } from './layout/layout.component';
 import { LoaderComponent } from './loader-component/loader-component';
-import { UiAppWrapperComponent } from './ui-app-wrapper/ui-app-wrapper.component';
+import { TopLayoutWrapperComponent } from './main-layout/top-layout-wrapper.component';
+import { RoutePathWrapperComponent } from './route-path-wrapper/route-path-wrapper.component';
+import { TopAppWrapperComponent } from './top-app-wrapper/top-app-wrapper.component';
 
 export const components: any[] = [
-  UiAppWrapperComponent,
-  UILayoutComponent,
-  UILayoutBodyComponent,
+  TopAppWrapperComponent,
+  TopLayoutWrapperComponent,
+  RoutePathWrapperComponent,
   LoaderComponent,
   ErrorPlaceholderComponent,
   ErrorComponent,
 ];
 
-export * from './layout-body/layout-body.component';
-export * from './layout/layout.component';
+export * from './route-path-wrapper/route-path-wrapper.component';
+export * from './main-layout/top-layout-wrapper.component';
 export * from './loader-component/loader-component';
-export * from './ui-app-wrapper/ui-app-wrapper.component';
-export * from './error-placeholder-component/error-alert-component.component';
+export * from './top-app-wrapper/top-app-wrapper.component';
+export * from './error-placeholder/error-placeholder.component';
 export * from './error/error.component';

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'products-store-ui-error-placeholder-component',
-  templateUrl: './error-alert-component.component.html',
-  styleUrls: ['./error-alert-component.component.scss'],
+  selector: 'products-store-ui-error-placeholder',
+  templateUrl: './error-placeholder.component.html',
+  styleUrls: ['./error-placeholder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorPlaceholderComponent {

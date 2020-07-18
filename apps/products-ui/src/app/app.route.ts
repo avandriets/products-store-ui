@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { UILayoutBodyComponent } from '@products-store-ui/ui';
+import { RoutePathWrapperComponent } from '@products-store-ui/ui';
 
 import { MainErrorContainerComponent, MainLayoutContainerComponent } from './containers';
 
@@ -10,7 +10,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'error',
-        component: UILayoutBodyComponent,
+        component: RoutePathWrapperComponent,
         data: {
           leftSideBar: false,
         },

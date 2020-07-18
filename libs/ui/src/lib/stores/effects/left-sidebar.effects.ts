@@ -3,51 +3,39 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 import * as store from 'store2';
 
-import { LayoutActions } from '../actions';
+import { LeftSidebarActions } from '../actions';
 
-/**
- * Provides Layout Effects.
- */
 @Injectable()
-export class LayoutEffects {
+export class LeftSidebarEffects {
 
-  /**
-   * Handle Aside Expand.
-   */
   public handleAsideExpand$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        LayoutActions.asideExpand,
+        LeftSidebarActions.leftSidebarOpened,
       ),
       tap(() => {
 
-        store.set('layout-leftSideBar', 'expanded');
+        store.set('layout-leftSideBar', 'opened');
 
       }),
     ),
     { dispatch: false },
   );
 
-  /**
-   * Handle Aside Collapse.
-   */
   public handleAsideCollapse$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        LayoutActions.asideCollapse,
+        LeftSidebarActions.leftSidebarClosed,
       ),
       tap(() => {
 
-        store.set('layout-leftSideBar', 'collapsed');
+        store.set('layout-leftSideBar', 'closed');
 
       }),
     ),
     { dispatch: false },
   );
 
-  /**
-   * Constructor.
-   */
   public constructor(
     private actions$: Actions,
   ) { }

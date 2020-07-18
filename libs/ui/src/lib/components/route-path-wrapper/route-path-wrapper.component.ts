@@ -6,12 +6,12 @@ import { map } from 'rxjs/operators';
 import { UILayoutStateService } from '../../stores';
 
 @Component({
-  selector: 'products-store-ui-layout-body',
-  templateUrl: './layout-body.component.html',
-  styleUrls: ['./layout-body.component.scss'],
+  selector: 'products-store-ui-route-path-wrapper',
+  templateUrl: './route-path-wrapper.component.html',
+  styleUrls: ['./route-path-wrapper.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class UILayoutBodyComponent implements OnInit {
+export class RoutePathWrapperComponent implements OnInit {
 
   public leftSideBar$!: Observable<boolean>;
 

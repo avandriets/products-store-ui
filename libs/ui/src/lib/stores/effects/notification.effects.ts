@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 
-import { UINotificationService } from '../../services';
+import { NotificationService } from '../../services';
 import { NotificationActions } from '../actions';
 
 @Injectable()
@@ -83,7 +83,7 @@ export class NotificationEffects {
 
   public constructor(
     private actions$: Actions,
-    private notification: UINotificationService,
+    private notification: NotificationService,
   ) { }
 
 }

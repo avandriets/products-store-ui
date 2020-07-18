@@ -1,28 +1,28 @@
 import { createReducer, on } from '@ngrx/store';
 import * as store from 'store2';
 
-import { LayoutActions } from '../actions';
+import { LeftSidebarActions } from '../actions';
 
 export interface LayoutState {
   readonly leftSideBar: string;
 }
 
 export const layoutInitialState = {
-  leftSideBar: store.get('layout-leftSideBar', 'expanded'),
+  leftSideBar: store.get('layout-leftSideBar', 'opened'),
 };
 
 export const reducer = createReducer(
   layoutInitialState,
-  on(LayoutActions.asideExpand,
+  on(LeftSidebarActions.leftSidebarOpened,
     state => ({
       ...state,
-      leftSideBar: 'expanded',
+      leftSideBar: 'opened',
     }),
   ),
-  on(LayoutActions.asideCollapse,
+  on(LeftSidebarActions.leftSidebarClosed,
     state => ({
       ...state,
-      leftSideBar: 'collapsed',
+      leftSideBar: 'closed',
     }),
   ),
 );

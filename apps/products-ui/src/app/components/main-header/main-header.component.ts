@@ -4,7 +4,7 @@ import { AuthService } from '@products-store-ui/products-auth';
 import { ApplicationUser } from '@products-store-ui/products-core';
 
 @Component({
-  selector: 'products-store-ui-app-header',
+  selector: 'products-store-ui-main-header',
   templateUrl: './main-header.component.html',
   styleUrls: ['./main-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

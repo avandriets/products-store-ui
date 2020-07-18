@@ -1,10 +1,10 @@
-import { LayoutEffects } from './layout.effects';
+import { LeftSidebarEffects } from './left-sidebar.effects';
 import { NotificationEffects } from './notification.effects';
 
 export const effects: any[] = [
-  LayoutEffects,
+  LeftSidebarEffects,
   NotificationEffects,
 ];
 
-export * from './layout.effects';
+export * from './left-sidebar.effects';
 export * from './notification.effects';

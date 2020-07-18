@@ -1,7 +1,7 @@
-import * as LayoutActions from './layout.actions';
+import * as LeftSidebarActions from './left-sidebar.actions';
 import * as NotificationActions from './notification.action';
 
 export {
-  LayoutActions,
+  LeftSidebarActions,
   NotificationActions,
 };

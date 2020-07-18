@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'products-store-ui-app-wrapper',
-  templateUrl: './ui-app-wrapper.component.html',
-  styleUrls: ['./ui-app-wrapper.component.scss'],
+  selector: 'products-store-ui-top-app-wrapper',
+  templateUrl: './top-app-wrapper.component.html',
+  styleUrls: ['./top-app-wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fadeInOut', [
@@ -17,7 +17,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
     ]),
   ],
 })
-export class UiAppWrapperComponent implements OnInit {
+export class TopAppWrapperComponent implements OnInit {
 
   @Input() public title = '';
   @Input() public ready = false;

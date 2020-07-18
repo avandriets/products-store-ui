@@ -1,6 +1,6 @@
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as fromLayout from './layout.reducer';
+import * as fromLayout from './left-sidebar.reducer';
 
 export interface State {
   readonly layout: fromLayout.LayoutState;

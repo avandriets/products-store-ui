@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { UILayoutBodyComponent } from '@products-store-ui/ui';
+import { RoutePathWrapperComponent } from '@products-store-ui/ui';
 
 import { ProductDetailsComponent, ProductsListComponent } from './components';
 
 export const routes: Routes = [
   {
     path: '',
-    component: UILayoutBodyComponent,
+    component: RoutePathWrapperComponent,
     data: {
       leftSideBar: false,
     },

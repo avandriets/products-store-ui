@@ -1,7 +1,7 @@
-import { UINotificationService } from './notification/notification.service';
+import { NotificationService } from './notification/notification.service';
 
 export const services: any[] = [
-  UINotificationService,
+  NotificationService,
 ];
 
 export * from './notification/notification.service';

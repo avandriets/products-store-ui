@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'products-store-ui-app-error',
+  selector: 'products-store-ui-main-error',
   templateUrl: './main-error.component.html',
   styleUrls: ['./main-error.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
