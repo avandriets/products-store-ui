@@ -1,0 +1,26 @@
+:host,
+.products-store-ui-app-wrapper,
+.products-store-ui-app-wrapper__body,
+.products-store-ui-app-wrapper__body__content {
+  display: block;
+  height: 100vh;
+}
+
+.products-store-ui-app-wrapper__body__loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.products-store-ui-app-wrapper__pending {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  overflow: hidden;
+  z-index: 1001;
+}

@@ -1,7 +1,7 @@
-import { AppEffects } from './app.effects';
+import { MainEffects } from './main.effects.service';
 
 export const effects: any[] = [
-  AppEffects,
+  MainEffects,
 ];
 
-export * from './app.effects';
+export * from './main.effects.service';

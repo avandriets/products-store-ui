@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { UILayoutBodyComponent } from '@products-store-ui/ui';
 
-import { AppErrorContainerComponent, AppLayoutContainerComponent } from './containers';
+import { MainErrorContainerComponent, MainLayoutContainerComponent } from './containers';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppLayoutContainerComponent,
+    component: MainLayoutContainerComponent,
     children: [
       {
         path: 'error',
@@ -17,9 +17,19 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            component: AppErrorContainerComponent,
+            component: MainErrorContainerComponent,
           },
         ],
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'products',
+      },
+      {
+        path: 'products',
+        loadChildren: async () => import('../../../../libs/products-catalog/src/lib/products-catalog.module').then(m => m.ProductsCatalogModule),
+        data: { preload: true },
       },
       {
         path: '**',

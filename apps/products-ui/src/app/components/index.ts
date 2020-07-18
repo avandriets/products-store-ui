@@ -1,13 +1,13 @@
-import { AppErrorComponent } from './app-error/app-error.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
-import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { MainErrorComponent } from './main-error/main-error.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
 
 export const components: any[] = [
-  AppLayoutComponent,
-  AppHeaderComponent,
-  AppErrorComponent,
+  MainLayoutComponent,
+  MainHeaderComponent,
+  MainErrorComponent,
 ];
 
-export * from './app-error/app-error.component';
-export * from './app-header/app-header.component';
-export * from './app-layout/app-layout.component';
+export * from './main-error/main-error.component';
+export * from './main-header/main-header.component';
+export * from './main-layout/main-layout.component';

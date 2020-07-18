@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EntityDataModule } from '@ngrx/data';
 import { EffectsModule } from '@ngrx/effects';
+import { RouterState, RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ConfigurationModule } from '@products-store-ui/configuration';
@@ -21,24 +22,24 @@ import { AppComponent } from './app.component';
 import { routes } from './app.route';
 import { components } from './components';
 import { containers } from './containers';
+import { AppCustomPreloader, CustomRouterStateSerializer } from './router-utils';
 import { effects } from './stores/effects';
+import { states } from './stores/facades';
 import { ROOT_REDUCERS } from './stores/reducers';
-import { states } from './stores/states';
 
 @NgModule({
   imports: [
-    // Angular Imports.
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     RouterModule.forRoot(routes, {
       relativeLinkResolution: 'corrected',
+      preloadingStrategy: AppCustomPreloader,
     }),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
 
-    // Ngrx Store Imports.
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
         strictStateImmutability: false,
@@ -52,9 +53,13 @@ import { states } from './stores/states';
       maxAge: 100,
       logOnly: environment.production,
     }),
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal,
+    }),
 
     EffectsModule.forRoot(effects),
     EntityDataModule.forRoot({ }),
+
     ToastrModule.forRoot(),
 
     ConfigurationModule.forRoot(environment),
@@ -69,6 +74,10 @@ import { states } from './stores/states';
     ...containers,
   ],
   providers: [
+
+    AppCustomPreloader,
+    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+
     ...states,
   ],
   bootstrap: [

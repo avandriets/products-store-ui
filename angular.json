@@ -254,6 +254,73 @@
           "style": "scss"
         }
       }
+    },
+    "products-catalog": {
+      "projectType": "library",
+      "root": "libs/products-catalog",
+      "sourceRoot": "libs/products-catalog/src",
+      "prefix": "products-store-ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products-catalog/tsconfig.lib.json",
+              "libs/products-catalog/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/products-catalog/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/products-catalog/jest.config.js",
+            "tsConfig": "libs/products-catalog/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/products-catalog/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "products-catalog-store": {
+      "projectType": "library",
+      "root": "libs/products-catalog-store",
+      "sourceRoot": "libs/products-catalog-store/src",
+      "prefix": "products-store-ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products-catalog-store/tsconfig.lib.json",
+              "libs/products-catalog-store/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/products-catalog-store/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/products-catalog-store/jest.config.js",
+            "tsConfig": "libs/products-catalog-store/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/products-catalog-store/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

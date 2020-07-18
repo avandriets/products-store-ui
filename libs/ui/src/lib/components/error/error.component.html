@@ -1,0 +1,24 @@
+<div fxLayout="row"
+     fxLayoutAlign="center center"
+     data-test-id="image">
+  <ng-content select="[image]"></ng-content>
+</div>
+
+<div fxLayout="row"
+     fxLayoutAlign="center center"
+     data-test-id="title">
+  <h2>
+    <ng-content select="[title]"></ng-content>
+  </h2>
+</div>
+
+<div fxLayout="row"
+     fxLayoutAlign="center center"
+     data-test-id="description">
+  <ng-content select="[description]"></ng-content>
+</div>
+
+<div fxLayout="row"
+     fxLayoutAlign="center center">
+  <ng-content select="[action]"></ng-content>
+</div>

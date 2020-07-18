@@ -1,10 +1,10 @@
-import { AppErrorContainerComponent } from './app-error-container/app-error-container.component';
-import { AppLayoutContainerComponent } from './app-layout-container/app-layout-container.component';
+import { MainErrorContainerComponent } from './main-error-container/main-error-container.component';
+import { MainLayoutContainerComponent } from './main-layout-container/main-layout-container.component';
 
 export const containers: any[] = [
-  AppErrorContainerComponent,
-  AppLayoutContainerComponent,
+  MainErrorContainerComponent,
+  MainLayoutContainerComponent,
 ];
 
-export * from './app-error-container/app-error-container.component';
-export * from './app-layout-container/app-layout-container.component';
+export * from './main-error-container/main-error-container.component';
+export * from './main-layout-container/main-layout-container.component';

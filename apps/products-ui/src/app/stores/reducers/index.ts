@@ -1,27 +1,17 @@
 import { InjectionToken } from '@angular/core';
 import { Action, ActionReducerMap } from '@ngrx/store';
 
-import * as fromAppReducer from './app.reducer';
+import * as fromMainReducer from './main.reducer';
 
-/**
- * Provides State.
- */
 export interface State {
-  readonly app: fromAppReducer.AppState;
+  readonly app: fromMainReducer.MainState;
 }
 
-/**
- * Provides Reducers.
- */
-export const ROOT_REDUCERS = new InjectionToken<
-  ActionReducerMap<State, Action>
->('Root reducers token', {
+export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<State, Action>>(
+  'Root reducers token', {
   factory: () => ({
-    app: fromAppReducer.reducer,
+    app: fromMainReducer.reducer,
   }),
 });
 
-/**
- * Provides Selectors.
- */
-export const selectAppState = (state: State) => state.app;
+export const selectAppMain = (state: State) => state.app;

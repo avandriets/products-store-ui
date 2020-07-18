@@ -8,9 +8,6 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 })
 export class LoaderComponent {
 
-  /**
-   * [class] attribute for host element
-   */
-  @HostBinding('class') public cls = 'spectrus-web-loader-component';
+  @HostBinding('class') public cls = 'products-store-ui-loader-component';
 
 }

@@ -1,0 +1,32 @@
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:not(.mat-button):not(.mat-raised-button):not(.mat-flat-button):not(.mat-stroked-button):not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab):active, a:not(.mat-button):not(.mat-raised-button):not(.mat-flat-button):not(.mat-stroked-button):not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab):hover {
+  text-decoration: underline;
+}
+
+table {
+  width: 100%;
+}
+
+// mat icon size
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+.mat-icon {
+  &.md-96{
+    @include md-icon-size(96px);
+  }
+}

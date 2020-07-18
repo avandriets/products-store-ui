@@ -5,15 +5,9 @@ import { tap } from 'rxjs/operators';
 import { UINotificationService } from '../../services';
 import { NotificationActions } from '../actions';
 
-/**
- * Notification Effects.
- */
 @Injectable()
 export class NotificationEffects {
 
-  /**
-   * Handle Success.
-   */
   public handleSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -28,9 +22,6 @@ export class NotificationEffects {
     { dispatch: false },
   );
 
-  /**
-   * Handle Error.
-   */
   public handleError$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -45,9 +36,6 @@ export class NotificationEffects {
     { dispatch: false },
   );
 
-  /**
-   * Handle Primary.
-   */
   public handlePrimary$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -62,9 +50,6 @@ export class NotificationEffects {
     { dispatch: false },
   );
 
-  /**
-   * Handle Danger.
-   */
   public handleDanger$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -96,9 +81,6 @@ export class NotificationEffects {
     { dispatch: false },
   );
 
-  /**
-   * Constructor.
-   */
   public constructor(
     private actions$: Actions,
     private notification: UINotificationService,

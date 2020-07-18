@@ -37,6 +37,12 @@
     },
     "configuration": {
       "tags": []
+    },
+    "products-catalog": {
+      "tags": []
+    },
+    "products-catalog-store": {
+      "tags": []
     }
   }
 }

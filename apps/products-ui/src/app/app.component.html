@@ -1,7 +1,7 @@
-<products-store-ui-container [ready]="ready$ | async"
-                             [error]="error$ | async"
-                             [title]="title$ | async">
+<products-store-ui-app-wrapper [ready]="ready$ | async"
+                               [error]="error$ | async"
+                               [title]="title$ | async">
 
   <router-outlet *ngIf="ready$ | async"></router-outlet>
 
-</products-store-ui-container>
+</products-store-ui-app-wrapper>

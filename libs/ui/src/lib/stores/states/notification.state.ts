@@ -9,16 +9,10 @@ import { NotificationActions } from '../actions';
 })
 export class UINotificationStateService {
 
-  /**
-   * Constructor.
-   */
   public constructor(
     private store: Store<any>,
   ) { }
 
-  /**
-   * Display a success notification.
-   */
   public success(message: string, options: Partial<IndividualConfig> = { }): void {
 
     this.store.dispatch(
@@ -30,9 +24,6 @@ export class UINotificationStateService {
 
   }
 
-  /**
-   * Display an error notification.
-   */
   public error(message: string, options: Partial<IndividualConfig> = { }): void {
 
     this.store.dispatch(
@@ -44,9 +35,6 @@ export class UINotificationStateService {
 
   }
 
-  /**
-   * Display a primary notification.
-   */
   public primary(message: string, options: Partial<IndividualConfig> = { }): void {
 
     this.store.dispatch(
@@ -58,9 +46,6 @@ export class UINotificationStateService {
 
   }
 
-  /**
-   * Display a danger notification
-   */
   public danger(message: string, options: Partial<IndividualConfig> = { }): void {
 
     this.store.dispatch(
@@ -72,9 +57,6 @@ export class UINotificationStateService {
 
   }
 
-  /**
-   * Display a warning notification.
-   */
   public warning(message: string, options: Partial<IndividualConfig> = { }): void {
 
     this.store.dispatch(

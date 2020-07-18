@@ -17,10 +17,7 @@ import { reducers } from './stores/reducers';
     RouterModule,
 
     LoadingBarHttpClientModule,
-    // Ngrx Store Imports.
     StoreModule.forFeature('ui', reducers),
-
-    // Ngrx Effects Imports.
     EffectsModule.forFeature(effects),
 
     ProductsCoreModule,

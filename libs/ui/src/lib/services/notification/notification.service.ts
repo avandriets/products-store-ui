@@ -6,16 +6,10 @@ import { ActiveToast } from 'ngx-toastr/toastr/toastr.service';
 @Injectable()
 export class UINotificationService {
 
-  /**
-   * Constructor.
-   */
   public constructor(
     private readonly toastr: ToastrService,
   ) { }
 
-  /**
-   * Show notification.
-   */
   public show(message: string, title: string, type: string, options: Partial<IndividualConfig> = { }): ActiveToast<any> {
 
     const params = {

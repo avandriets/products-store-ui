@@ -10,55 +10,24 @@ import * as fromLayoutSelector from '../selectors/layout.selectors';
 })
 export class UILayoutStateService {
 
-  /**
-   * Constructor.
-   */
   public constructor(
     private store: Store<any>,
   ) { }
 
-  /**
-   * Expand aside.
-   */
   public expandAside(): void {
-
-    this.store.dispatch(
-      LayoutActions.asideExpand(),
-    );
-
+    this.store.dispatch(LayoutActions.asideExpand());
   }
 
-  /**
-   * Collapse aside.
-   */
   public collapseAside(): void {
-
-    this.store.dispatch(
-      LayoutActions.asideCollapse(),
-    );
-
+    this.store.dispatch(LayoutActions.asideCollapse());
   }
 
-  /**
-   * Determine if aside is expanded.
-   */
   public isAsideExpanded$(): Observable<boolean> {
-
-    return this.store.pipe(
-      select(fromLayoutSelector.selectLayoutAsideIsExpanded),
-    );
-
+    return this.store.pipe(select(fromLayoutSelector.selectLayoutAsideIsExpanded));
   }
 
-  /**
-   * Determine if aside is collapsed.
-   */
   public isAsideCollapsed$(): Observable<boolean> {
-
-    return this.store.pipe(
-      select(fromLayoutSelector.selectLayoutAsideIsCollapsed),
-    );
-
+    return this.store.pipe(select(fromLayoutSelector.selectLayoutAsideIsCollapsed));
   }
 
 }
