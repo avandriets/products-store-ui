@@ -4,11 +4,11 @@ import * as store from 'store2';
 import { LayoutActions } from '../actions';
 
 export interface LayoutState {
-  readonly aside: string;
+  readonly leftSideBar: string;
 }
 
 export const layoutInitialState = {
-  aside: store.get('layout-aside', 'expanded'),
+  leftSideBar: store.get('layout-leftSideBar', 'expanded'),
 };
 
 export const reducer = createReducer(
@@ -16,13 +16,13 @@ export const reducer = createReducer(
   on(LayoutActions.asideExpand,
     state => ({
       ...state,
-      aside: 'expanded',
+      leftSideBar: 'expanded',
     }),
   ),
   on(LayoutActions.asideCollapse,
     state => ({
       ...state,
-      aside: 'collapsed',
+      leftSideBar: 'collapsed',
     }),
   ),
 );

@@ -12,7 +12,7 @@ export const routes: Routes = [
         path: 'error',
         component: UILayoutBodyComponent,
         data: {
-          aside: false,
+          leftSideBar: false,
         },
         children: [
           {

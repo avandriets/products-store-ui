@@ -8,7 +8,7 @@ export const routes: Routes = [
     path: '',
     component: UILayoutBodyComponent,
     data: {
-      aside: false,
+      leftSideBar: false,
     },
     children: [
       {

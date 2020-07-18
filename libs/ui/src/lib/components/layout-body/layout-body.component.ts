@@ -13,7 +13,7 @@ import { UILayoutStateService } from '../../stores';
 })
 export class UILayoutBodyComponent implements OnInit {
 
-  public aside$!: Observable<boolean>;
+  public leftSideBar$!: Observable<boolean>;
 
   public isAsideCollapsed$!: Observable<boolean>;
 
@@ -24,8 +24,8 @@ export class UILayoutBodyComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.aside$ = this.route.data.pipe(
-      map(data => !!data?.aside),
+    this.leftSideBar$ = this.route.data.pipe(
+      map(data => !!data?.leftSideBar),
     );
 
     this.isAsideCollapsed$ = this.state.isAsideCollapsed$();

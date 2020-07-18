@@ -1,10 +1,10 @@
 <div fxFlexFill>
-  <div *ngIf="aside$ | async"
+  <div *ngIf="leftSideBar$ | async"
         fxLayout="column"
         [fxFlex]="(isAsideCollapsed$ | async) ? '200px' : '64px'"
         class="left-side-panel">
 
-    <router-outlet name="aside"
+    <router-outlet name="leftSideBar"
                    data-test-id="asideBody">
     </router-outlet>
 

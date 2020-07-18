@@ -21,7 +21,7 @@ export class LayoutEffects {
       ),
       tap(() => {
 
-        store.set('layout-aside', 'expanded');
+        store.set('layout-leftSideBar', 'expanded');
 
       }),
     ),
@@ -38,7 +38,7 @@ export class LayoutEffects {
       ),
       tap(() => {
 
-        store.set('layout-aside', 'collapsed');
+        store.set('layout-leftSideBar', 'collapsed');
 
       }),
     ),
