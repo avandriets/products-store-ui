@@ -15,6 +15,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "url",
+              "querystring",
+              "punycode"
+            ],
             "outputPath": "dist/apps/products-ui",
             "index": "apps/products-ui/src/index.html",
             "main": "apps/products-ui/src/main.ts",
