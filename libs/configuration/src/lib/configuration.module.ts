@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
+import { services } from './services';
+import { ENVIRONMENT } from './tokens';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -12,7 +15,8 @@ export class ConfigurationModule {
     return {
       ngModule: ConfigurationModule,
       providers: [
-        { provide: 'environment', useValue: environment },
+        ...services,
+        { provide: ENVIRONMENT, useValue: environment },
       ],
     };
   }

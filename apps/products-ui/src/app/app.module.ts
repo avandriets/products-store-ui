@@ -5,14 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { EntityDataModule } from '@ngrx/data';
+import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ConfigurationModule } from '@products-store-ui/configuration';
+import { ConfigService, ConfigurationModule } from '@products-store-ui/configuration';
 import { ProductsAuthModule } from '@products-store-ui/products-auth';
-import { ProductsCoreModule } from '@products-store-ui/products-core';
+import {
+  ENTITY_COLLECTION_REDUCER_METHODS_FACTORY_PROVIDER,
+  ProductsCoreModule,
+  dataServiceConfigFactory,
+} from '@products-store-ui/products-core';
 import { UiModule } from '@products-store-ui/ui';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -75,8 +79,11 @@ import { ROOT_REDUCERS } from './stores/reducers';
   ],
   providers: [
 
+    ENTITY_COLLECTION_REDUCER_METHODS_FACTORY_PROVIDER,
+
     AppCustomPreloader,
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    { provide: DefaultDataServiceConfig, useFactory: dataServiceConfigFactory, deps: [ConfigService] },
 
     ...states,
   ],

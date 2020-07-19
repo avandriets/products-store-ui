@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ENVIRONMENT } from '@products-store-ui/configuration';
 import { User, UserManager } from 'oidc-client';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,7 +17,7 @@ export class AuthService {
   private manager: UserManager = null;
 
   public constructor(
-    @Inject('environment') private environment: any,
+    @Inject(ENVIRONMENT) private environment: any,
   ) {
 
     this.settings = {

@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { StoreModule } from '@ngrx/store';
+import { ConfigurationModule } from '@products-store-ui/configuration';
 
 import { reducers } from './store/reducers';
 import { states } from './store/states';
@@ -26,7 +27,6 @@ import { states } from './store/states';
   imports: [
     CommonModule,
     HttpClientModule,
-
     FormsModule,
     ReactiveFormsModule,
 
@@ -48,6 +48,7 @@ import { states } from './store/states';
 
     // Ngrx Store Imports.
     StoreModule.forFeature('products-client', reducers),
+    ConfigurationModule,
 
   ],
   exports: [
