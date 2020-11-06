@@ -19,7 +19,7 @@ export class ProductService extends BaseEntityCollectionService<Product> {
 
     const paginationSelector =
       createSelector(
-        this.selectors.selectEntityCache, state => (state.ContentSummary as any)?.pagination?.count ?? 0,
+        this.selectors.selectEntityCache, state => (state.Product as any)?.pagination?.count ?? 0,
       );
 
     return this.store.pipe(

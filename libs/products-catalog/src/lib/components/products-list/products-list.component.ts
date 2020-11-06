@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { MergeStrategy } from '@ngrx/data';
 import { Product, ProductService } from '@products-store-ui/products-catalog-store';
@@ -31,8 +32,10 @@ export class ProductsListComponent implements OnInit {
   public pagination$!: Observable<Pagination>;
   public filter$!: Observable<ProductFilter>;
 
-  public paginationLimit = 10;
-  public paginationLimits = [5, 10, 25, 50];
+  public paginationLimit = 1;
+  public paginationLimits = [1, 10, 25, 50];
+
+  public pageEvent: PageEvent;
 
   public constructor(
     private readonly route: ActivatedRoute,
@@ -175,6 +178,12 @@ export class ProductsListComponent implements OnInit {
     };
 
     this.updateParams(params);
+
+  }
+
+  public pageChangeEvent(event: PageEvent): void {
+
+    this.onPaginationUpdate({ pageIndex: event.pageIndex, pageSize: event.pageSize });
 
   }
 

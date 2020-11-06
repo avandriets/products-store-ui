@@ -1,6 +1,7 @@
 <products-store-ui-page-template *ngIf="{
  status: status$ | async,
- products: products$ | async
+ products: products$ | async,
+ pagination: pagination$ | async
 } as data">
 
   <ng-container title>
@@ -26,6 +27,12 @@
           {{ product.id }}
           {{ product.title }}
         </p>
+
+        <mat-paginator [length]="data.pagination.count"
+                       [pageSize]="paginationLimit"
+                       [pageSizeOptions]="paginationLimits"
+                       (page)="pageChangeEvent($event)">
+        </mat-paginator>
 
       </ng-template>
 

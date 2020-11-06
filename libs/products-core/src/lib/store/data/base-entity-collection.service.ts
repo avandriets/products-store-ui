@@ -13,16 +13,10 @@ import { Status } from '../../interfaces';
 @Injectable({ providedIn: 'root' })
 export class BaseEntityCollectionService<T> extends EntityCollectionServiceBase<T> {
 
-  /**
-   * Constructor
-   */
   public constructor(entityName: string, serviceElementsFactory: EntityCollectionServiceElementsFactory) {
     super(entityName, serviceElementsFactory);
   }
 
-  /**
-   * Get status
-   */
   public get status$(): Observable<Status> {
     return combineLatest([
       this.loaded$,
@@ -47,9 +41,6 @@ export class BaseEntityCollectionService<T> extends EntityCollectionServiceBase<
     );
   }
 
-  /**
-   * Get server data changed
-   */
   public get serverDataChanged$(): Observable<any> {
     return this.entityActions$.pipe(
       ofEntityOp([
