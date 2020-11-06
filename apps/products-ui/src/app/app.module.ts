@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -32,6 +32,7 @@ import { AppCustomPreloader, CustomRouterStateSerializer } from './router-utils'
 import { effects } from './stores/effects';
 import { states } from './stores/facades';
 import { ROOT_REDUCERS } from './stores/reducers';
+import { CustomRouteReuseStrategy } from './strategies';
 
 @NgModule({
   imports: [
@@ -87,6 +88,8 @@ import { ROOT_REDUCERS } from './stores/reducers';
 
     AppCustomPreloader,
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy },
+
     { provide: DefaultDataServiceConfig, useFactory: dataServiceConfigFactory, deps: [ConfigService] },
 
     ...states,

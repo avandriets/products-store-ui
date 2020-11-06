@@ -5,3 +5,4 @@ export * from './lib/store/selectors';
 export * from './lib/store/states';
 export * from './lib/store/data';
 export * from './lib/interfaces';
+export * from './lib/utils';

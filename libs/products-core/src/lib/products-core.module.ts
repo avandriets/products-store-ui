@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { ConfigurationModule } from '@products-store-ui/configuration';
 
@@ -29,6 +30,7 @@ import { states } from './store/states';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     MatButtonModule,
     MatButtonToggleModule,
@@ -47,7 +49,7 @@ import { states } from './store/states';
     MatProgressSpinnerModule,
 
     // Ngrx Store Imports.
-    StoreModule.forFeature('products-client', reducers),
+    StoreModule.forFeature('products-core', reducers),
     ConfigurationModule,
 
   ],

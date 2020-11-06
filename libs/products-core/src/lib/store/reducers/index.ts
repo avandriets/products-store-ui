@@ -12,6 +12,6 @@ export function reducers(state: DatasetState | undefined, action: Action): Datas
   })(state, action);
 }
 
-export const selectProductsCoreFeature = createFeatureSelector<DatasetState>('products-client');
+export const selectProductsCoreFeature = createFeatureSelector<DatasetState>('products-core');
 
 export const selectUserState = createSelector(selectProductsCoreFeature, state => state.user);
