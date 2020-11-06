@@ -1,0 +1,44 @@
+<div *ngIf="showResolved"
+     class="products-store-ui-state-container__resolved"
+     data-test-id="resolved"
+     [@slideInOut]="'in'">
+  <ng-container *ngTemplateOutlet="resolved ? resolved : resolvedDefault"></ng-container>
+</div>
+
+<div *ngIf="showRejected"
+     class="products-store-ui-state-container__rejected"
+     data-test-id="rejected"
+     [@slideInOut]="'in'">
+  <ng-container *ngTemplateOutlet="rejected ? rejected : rejectedDefault"></ng-container>
+</div>
+
+<div *ngIf="showPending"
+     class="products-store-ui-state-container__pending"
+     data-test-id="pending"
+     [@slideInOut]="'in'"
+     [style.min-height]="height">
+  <ng-container *ngTemplateOutlet="pending ? pending : pendingDefault"></ng-container>
+</div>
+
+<div *ngIf="showUpdating"
+     class="products-store-ui-state-container__updating"
+     data-test-id="updating"
+     [@fadeInOut]="'in'">
+  <ng-container *ngTemplateOutlet="updating ? updating : updatingDefault"></ng-container>
+</div>
+
+<ng-template #resolvedDefault>
+  <pre>{{ state | json }}</pre>
+</ng-template>
+
+<ng-template #rejectedDefault>
+  <products-store-ui-error-placeholder [error]="defaultStatus.err"></products-store-ui-error-placeholder>
+</ng-template>
+
+<ng-template #pendingDefault>
+  <products-store-ui-loader></products-store-ui-loader>
+</ng-template>
+
+<ng-template #updatingDefault>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

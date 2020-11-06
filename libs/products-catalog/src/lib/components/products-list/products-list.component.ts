@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductService } from '@products-store-ui/products-catalog-store';
+import { Status } from '@products-store-ui/products-core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,7 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class ProductsListComponent implements OnInit {
 
-  public productsList$: Observable<Product[]>;
+  public products$: Observable<Product[]>;
+  public status$!: Observable<Status>;
 
   public constructor(
     private readonly productService: ProductService,
@@ -18,7 +20,8 @@ export class ProductsListComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.productsList$ = this.productService.getAll();
+    this.products$ = this.productService.getAll();
+    this.status$ = this.productService.status$;
 
   }
 

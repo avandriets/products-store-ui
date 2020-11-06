@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory,
-  EntityOp,
-  ofEntityOp,
 } from '@ngrx/data';
 import { Status } from '@products-store-ui/products-core';
 import { Observable, combineLatest } from 'rxjs';
@@ -38,22 +36,22 @@ export class ProductService extends EntityCollectionServiceBase<Product> {
     );
   }
 
-  /**
-   * Get server data changed
-   */
-  public get serverDataChanged$(): Observable<any> {
-    return this.entityActions$.pipe(
-      ofEntityOp([
-        EntityOp.SAVE_ADD_ONE_SUCCESS,
-        EntityOp.SAVE_ADD_MANY_SUCCESS,
-        EntityOp.SAVE_UPDATE_ONE_SUCCESS,
-        EntityOp.SAVE_UPDATE_MANY_SUCCESS,
-        EntityOp.SAVE_DELETE_ONE_SUCCESS,
-        EntityOp.SAVE_DELETE_MANY_SUCCESS,
-      ]),
-      startWith(null),
-    );
-  }
+  // /**
+  //  * Get server data changed
+  //  */
+  // public get serverDataChanged$(): Observable<any> {
+  //   return this.entityActions$.pipe(
+  //     ofEntityOp([
+  //       EntityOp.SAVE_ADD_ONE_SUCCESS,
+  //       EntityOp.SAVE_ADD_MANY_SUCCESS,
+  //       EntityOp.SAVE_UPDATE_ONE_SUCCESS,
+  //       EntityOp.SAVE_UPDATE_MANY_SUCCESS,
+  //       EntityOp.SAVE_DELETE_ONE_SUCCESS,
+  //       EntityOp.SAVE_DELETE_MANY_SUCCESS,
+  //     ]),
+  //     startWith(null),
+  //   );
+  // }
 
   // public createNew(): Observable<Product> {
   //

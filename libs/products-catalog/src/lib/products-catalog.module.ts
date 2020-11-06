@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CoreModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { ProductsCatalogStoreModule } from '@products-store-ui/products-catalog-store';
+import { ProductsCoreModule } from '@products-store-ui/products-core';
 import { UiModule } from '@products-store-ui/ui';
 
 import { ProductDetailsComponent, ProductsListComponent } from './components';
@@ -17,7 +17,7 @@ import { routes } from './products-catalog.route';
     ProductsCatalogStoreModule,
 
     UiModule,
-    CoreModule,
+    ProductsCoreModule,
   ],
   declarations: [
     ProductsListComponent,

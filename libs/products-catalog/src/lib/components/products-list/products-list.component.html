@@ -1,1 +1,33 @@
-<p>products-list works!</p>
+<products-store-ui-page-template *ngIf="{ status: status$ | async, products: products$ | async} as data">
+
+  <ng-container title>
+
+    <h2>Products</h2>
+
+  </ng-container>
+
+  <ng-container action>
+
+    <button mat-stroked-button>Basic</button>
+
+  </ng-container>
+
+  <ng-container body>
+
+    <products-store-ui-state-container [height]="'380px'"
+                                       [state]="data.status"
+                                       [resolved]="resolved">
+      <ng-template #resolved>
+
+        <p *ngFor="let product of data.products">
+          {{ product.id }}
+          {{ product.title }}
+        </p>
+
+      </ng-template>
+
+    </products-store-ui-state-container>
+
+  </ng-container>
+
+</products-store-ui-page-template>

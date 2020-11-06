@@ -1,0 +1,18 @@
+<div *ngIf="header"
+     class="products-store-ui-page-template-header">
+
+  <div class="products-store-ui-page-template-header-primary">
+    <ng-content select="[breadcrumb]"></ng-content>
+    <ng-content select="[title]"></ng-content>
+    <ng-content select="[back]"></ng-content>
+  </div>
+
+  <div class="products-store-ui-page-template-header-secondary">
+    <ng-content select="[action]"></ng-content>
+  </div>
+
+</div>
+
+<div class="products-store-ui-page-template-body">
+  <ng-content select="[body]"></ng-content>
+</div>

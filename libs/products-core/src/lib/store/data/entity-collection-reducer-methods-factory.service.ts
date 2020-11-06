@@ -6,7 +6,7 @@ import {
   EntityCollectionReducerMethods,
   EntityCollectionReducerMethodsFactory,
   EntityDefinition,
-  EntityDefinitionService,
+  EntityDefinitionService, EntityOp,
 } from '@ngrx/data';
 
 export class AdditionalEntityCollectionReducerMethods<T> extends EntityCollectionReducerMethods<T> {
@@ -18,7 +18,10 @@ export class AdditionalEntityCollectionReducerMethods<T> extends EntityCollectio
     super(entityName, definition);
   }
 
-  protected queryByKeySuccess(collection: EntityCollection<T>, action: EntityAction<T>): EntityCollection<T> {
+  protected queryByKeySuccess(
+    collection: EntityCollection<T>,
+    action: EntityAction<T>,
+  ): EntityCollection<T> {
 
     const result = {
       ...super.queryByKeySuccess(collection, action),
@@ -26,10 +29,10 @@ export class AdditionalEntityCollectionReducerMethods<T> extends EntityCollectio
     };
 
     return result;
+
   }
 
   protected queryManySuccess(collection: EntityCollection<T>, action: EntityAction<T[]>): EntityCollection<T> {
-
     const result = {
       ...super.queryManySuccess(collection, action),
       loaded: true,
@@ -47,9 +50,14 @@ export class AdditionalEntityCollectionReducerMethods<T> extends EntityCollectio
     };
 
     return result;
+
   }
 
   protected extractData<D = any>(action: EntityAction<D>): D {
+
+    if (![EntityOp.QUERY_ALL_SUCCESS, EntityOp.QUERY_MANY_SUCCESS].includes(action.payload.entityOp)) {
+      return super.extractData(action);
+    }
 
     const defaultData = (action.payload?.data ?? []) as D;
 
@@ -62,6 +70,7 @@ export class AdditionalEntityCollectionReducerMethods<T> extends EntityCollectio
     }
 
     return defaultData;
+
   }
 
   private getPaginationInfo<D = any>(action: EntityAction<D>): any {
@@ -91,9 +100,7 @@ export class AdditionalEntityCollectionReducerMethods<T> extends EntityCollectio
 @Injectable()
 export class AdditionalEntityCollectionReducerMethodsFactory extends EntityCollectionReducerMethodsFactory {
 
-  public constructor(
-    protected eds: EntityDefinitionService,
-  ) {
+  public constructor(protected eds: EntityDefinitionService) {
     super(eds);
   }
 
@@ -109,6 +116,7 @@ export class AdditionalEntityCollectionReducerMethodsFactory extends EntityColle
 
     return methodsClass.methods;
   }
+
 }
 
 export const ENTITY_COLLECTION_REDUCER_METHODS_FACTORY_PROVIDER = {

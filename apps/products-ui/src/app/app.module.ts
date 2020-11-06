@@ -14,6 +14,8 @@ import { ConfigService, ConfigurationModule } from '@products-store-ui/configura
 import { ProductsAuthModule } from '@products-store-ui/products-auth';
 import {
   ENTITY_COLLECTION_REDUCER_METHODS_FACTORY_PROVIDER,
+  ENTITY_DISPATCHER_DEFAULT_OPTIONS,
+  ENTITY_DISPATCHER_FACTORY_PROVIDER,
   ProductsCoreModule,
   dataServiceConfigFactory,
 } from '@products-store-ui/products-core';
@@ -80,6 +82,8 @@ import { ROOT_REDUCERS } from './stores/reducers';
   providers: [
 
     ENTITY_COLLECTION_REDUCER_METHODS_FACTORY_PROVIDER,
+    ENTITY_DISPATCHER_DEFAULT_OPTIONS,
+    ENTITY_DISPATCHER_FACTORY_PROVIDER,
 
     AppCustomPreloader,
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
