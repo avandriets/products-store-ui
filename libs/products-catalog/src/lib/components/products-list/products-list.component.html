@@ -40,7 +40,9 @@
               </th>
               <td *matCellDef="let element"
                   mat-cell>
-                {{element.title}}
+                <a [routerLink]="element.id">
+                  {{element.title}}
+                </a>
               </td>
             </ng-container>
 
