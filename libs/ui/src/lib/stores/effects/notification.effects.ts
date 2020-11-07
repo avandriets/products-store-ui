@@ -74,7 +74,7 @@ export class NotificationEffects {
       ),
       tap(({ message, options }) => {
 
-        this.notification.show(message, '', 'info', options);
+        this.notification.show(message, '', 'warning', options);
 
       }),
     ),

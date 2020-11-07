@@ -37,9 +37,7 @@ export class ProductDetailsComponent implements OnInit {
     this.product$ = this.routerState.getParam$('productId')
       .pipe(
         filter(id => !!id),
-        tap(id => {
-          this.isNewObject = id === 'add';
-        }),
+        tap(id => this.isNewObject = id === 'add'),
         switchMap(id => this.isNewObject ? this.productService.createNew() : this.productService.getByKey(id)),
         tap(product => this.form.patchValue(product, { emitEvent: false })),
       );
@@ -52,15 +50,9 @@ export class ProductDetailsComponent implements OnInit {
       take(1),
     ).subscribe(productId => {
 
-      let product = {
-        ...this.form.value,
-      };
-
-      if (!this.isNewObject) {
-        product = { ...product, id: productId };
-      }
-
-      this.productService.add(product);
+      this.isNewObject
+        ? this.productService.add({ ...this.form.value })
+        : this.productService.update({ ...this.form.value, id: productId });
 
     });
 

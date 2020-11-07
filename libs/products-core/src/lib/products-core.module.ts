@@ -7,7 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -48,6 +50,9 @@ import { states } from './store/states';
     MatRadioModule,
     FlexLayoutModule,
     MatProgressSpinnerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
 
     // Ngrx Store Imports.
     StoreModule.forFeature('products-core', reducers),
@@ -71,6 +76,8 @@ import { states } from './store/states';
     MatProgressSpinnerModule,
     FlexLayoutModule,
     MatPaginatorModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
 })
 export class ProductsCoreModule {

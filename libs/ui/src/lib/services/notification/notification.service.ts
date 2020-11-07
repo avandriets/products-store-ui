@@ -21,7 +21,18 @@ export class NotificationService {
       ...options,
     };
 
-    return this.toastr.show(message, title, params, type);
+    switch (type) {
+      case 'success':
+        return this.toastr.success(message, title, params);
+      case 'error':
+        return this.toastr.error(message, title, params);
+      case 'info':
+        return this.toastr.info(message, title, params);
+      case 'warning':
+        return this.toastr.warning(message, title, params);
+      default:
+        return undefined;
+    }
 
   }
 

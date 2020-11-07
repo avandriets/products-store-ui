@@ -23,14 +23,76 @@
                                        [resolved]="resolved">
       <ng-template #resolved>
 
-        <form *ngIf="form"
-              [formGroup]="form">
+        <mat-card fxLayout="column"
+                  fxLayoutAlign="center center">
 
-          <h2 class="uk-card-title">
-            Product Details
-          </h2>
+          <form *ngIf="form"
+                [formGroup]="form"
+                class="model-form">
 
-        </form>
+            <h2 class="uk-card-title">
+              Product Details
+            </h2>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center start">
+
+              <mat-form-field class="input-full-width">
+                <input matInput
+                       autocomplete="off"
+                       formControlName="id"
+                       placeholder="ID">
+              </mat-form-field>
+
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center start">
+
+              <mat-form-field class="input-full-width">
+                <input matInput
+                       required
+                       autocomplete="off"
+                       formControlName="title"
+                       placeholder="Title">
+                <mat-error *ngIf="form.controls['title'].hasError('required')">required field</mat-error>
+              </mat-form-field>
+
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center start">
+
+              <mat-form-field class="input-full-width">
+                <input matInput
+                       autocomplete="off"
+                       formControlName="description"
+                       placeholder="Description">
+              </mat-form-field>
+
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="end start">
+              <a mat-raised-button
+                 class="mr-16"
+                 [routerLink]="['/']">
+                Cancel
+              </a>
+
+              <button submit
+                      type="submit"
+                      mat-raised-button
+                      color="primary"
+                      [disabled]="!form.valid || data.status.pending"
+                      (click)="onSave()">
+                Save
+              </button>
+            </div>
+
+          </form>
+
+        </mat-card>
 
       </ng-template>
 

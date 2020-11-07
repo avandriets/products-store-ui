@@ -51,7 +51,7 @@
     "@nrwl/angular": "9.5.1",
     "lodash.isequalwith": "^4.4.0",
     "lodash.pickby": "^4.6.0",
-    "ngx-toastr": "^12.1.0",
+    "ngx-toastr": "^13.1.0",
     "oidc-client": "^1.10.1",
     "rxjs": "^6.6.0",
     "store2": "^2.11.2",
