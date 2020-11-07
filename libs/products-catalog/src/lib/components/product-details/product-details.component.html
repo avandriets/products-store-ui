@@ -1,1 +1,41 @@
-<p>product-details works!</p>
+<products-store-ui-page-template *ngIf="{ status: status$ | async, product: product$ | async } as data">
+
+  <ng-container title>
+    <h2>{{ data.product?.title }}</h2>
+  </ng-container>
+
+  <ng-container action>
+
+    <div *ngIf="!isNewObject"
+         fxLayout="row"
+         fxLayoutAlign="end center">
+      <button mat-stroked-button color="warn">
+        Delete
+      </button>
+    </div>
+
+  </ng-container>
+
+  <ng-container body>
+
+    <products-store-ui-state-container [height]="'380px'"
+                                       [state]="data.status"
+                                       [resolved]="resolved">
+      <ng-template #resolved>
+
+        <form *ngIf="form"
+              [formGroup]="form">
+
+          <h2 class="uk-card-title">
+            Product Details
+          </h2>
+
+        </form>
+
+      </ng-template>
+
+    </products-store-ui-state-container>
+
+  </ng-container>
+
+</products-store-ui-page-template>

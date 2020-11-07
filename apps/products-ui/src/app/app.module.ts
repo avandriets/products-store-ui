@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
-import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
+import { DefaultDataServiceConfig, DefaultDataServiceFactory, EntityDataModule } from '@ngrx/data';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
@@ -13,6 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ConfigService, ConfigurationModule } from '@products-store-ui/configuration';
 import { ProductsAuthModule } from '@products-store-ui/products-auth';
 import {
+  DataServiceFactory,
   ENTITY_COLLECTION_REDUCER_METHODS_FACTORY_PROVIDER,
   ENTITY_DISPATCHER_DEFAULT_OPTIONS,
   ENTITY_DISPATCHER_FACTORY_PROVIDER,
@@ -81,6 +82,8 @@ import { CustomRouteReuseStrategy } from './strategies';
     ...containers,
   ],
   providers: [
+
+    { provide: DefaultDataServiceFactory, useClass: DataServiceFactory },
 
     ENTITY_COLLECTION_REDUCER_METHODS_FACTORY_PROVIDER,
     ENTITY_DISPATCHER_DEFAULT_OPTIONS,

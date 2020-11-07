@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { createSelector, select } from '@ngrx/store';
 import { BaseEntityCollectionService } from '@products-store-ui/products-core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Product } from '../interfaces';
 
@@ -25,6 +25,19 @@ export class ProductService extends BaseEntityCollectionService<Product> {
     return this.store.pipe(
       select(paginationSelector),
     );
+  }
+
+  public createNew(): Observable<Product> {
+
+    const product: Product = {
+      id: '',
+      title: '',
+      description: '',
+    };
+
+    this.setLoaded(true);
+
+    return of(product);
   }
 
 }
