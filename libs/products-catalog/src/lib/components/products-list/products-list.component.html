@@ -23,44 +23,50 @@
                                        [resolved]="resolved">
       <ng-template #resolved>
 
-        <table mat-table
-               matSort
-               [dataSource]="data.products"
-               (matSortChange)="onSortingClick($event)">
+        <ng-container *ngIf="sorting$ | async as sorting">
 
-          <ng-container matColumnDef="title">
-            <th *matHeaderCellDef
-                mat-header-cell
-                mat-sort-header>
-              Title
-            </th>
-            <td *matCellDef="let element"
-                mat-cell>
-              {{element.title}}
-            </td>
-          </ng-container>
+          <table mat-table
+                 matSort
+                 [matSortActive]="sorting.field"
+                 [matSortDirection]="sorting.direction"
+                 [dataSource]="data.products"
+                 (matSortChange)="onSortingClick($event)">
 
-          <ng-container matColumnDef="description">
-            <th *matHeaderCellDef
-                mat-header-cell
-                mat-sort-header>
-              Description
-            </th>
-            <td *matCellDef="let element"
-                mat-cell>
-              {{element.description}}
-            </td>
-          </ng-container>
+            <ng-container matColumnDef="title">
+              <th *matHeaderCellDef
+                  mat-header-cell
+                  mat-sort-header>
+                Title
+              </th>
+              <td *matCellDef="let element"
+                  mat-cell>
+                {{element.title}}
+              </td>
+            </ng-container>
 
-          <tr *matHeaderRowDef="displayedColumns"
-              mat-header-row>
-          </tr>
+            <ng-container matColumnDef="description">
+              <th *matHeaderCellDef
+                  mat-header-cell
+                  mat-sort-header>
+                Description
+              </th>
+              <td *matCellDef="let element"
+                  mat-cell>
+                {{element.description}}
+              </td>
+            </ng-container>
 
-          <tr *matRowDef="let row; columns: displayedColumns;"
-              mat-row>
-          </tr>
+            <tr *matHeaderRowDef="displayedColumns"
+                mat-header-row>
+            </tr>
 
-        </table>
+            <tr *matRowDef="let row; columns: displayedColumns;"
+                mat-row>
+            </tr>
+
+          </table>
+
+        </ng-container>
 
         <ng-container *ngIf="pagination$ | async as pagination">
 

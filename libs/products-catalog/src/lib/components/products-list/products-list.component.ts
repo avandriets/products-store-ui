@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { MergeStrategy } from '@ngrx/data';
 import { Product, ProductService } from '@products-store-ui/products-catalog-store';
@@ -26,7 +25,7 @@ import { ProductFilter } from '../../interfaces';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss'],
 })
-export class ProductsListComponent implements OnInit, AfterViewInit {
+export class ProductsListComponent implements OnInit {
 
   @ViewChild(MatSort) public sort: MatSort;
 
@@ -41,7 +40,6 @@ export class ProductsListComponent implements OnInit, AfterViewInit {
   public paginationLimits = [5, 10, 25, 50];
 
   public displayedColumns: string[] = ['title', 'description'];
-  public dataSource = new MatTableDataSource([]);
 
   public constructor(
     private readonly route: ActivatedRoute,
@@ -82,12 +80,6 @@ export class ProductsListComponent implements OnInit, AfterViewInit {
         }, { mergeStrategy: MergeStrategy.OverwriteChanges }),
       ),
     );
-
-  }
-
-  public ngAfterViewInit(): void {
-
-    this.dataSource.sort = this.sort;
 
   }
 
