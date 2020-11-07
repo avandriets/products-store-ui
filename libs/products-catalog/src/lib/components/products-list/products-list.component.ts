@@ -35,8 +35,6 @@ export class ProductsListComponent implements OnInit {
   public paginationLimit = 1;
   public paginationLimits = [1, 10, 25, 50];
 
-  public pageEvent: PageEvent;
-
   public constructor(
     private readonly route: ActivatedRoute,
     private readonly productService: ProductService,
@@ -62,7 +60,7 @@ export class ProductsListComponent implements OnInit {
     ).pipe(
       map(([_, filterContent, sorting, pagination]) =>
         removeFalsyValues({
-          q: filterContent.name,
+          q: filterContent.title,
           sort_field: sorting.field,
           sort: sorting.direction,
           limit: pagination.limit,
@@ -82,7 +80,7 @@ export class ProductsListComponent implements OnInit {
 
     return this.routerState.getQueryParam$('name')
       .pipe(
-        map(name => ({ name: name || '' })),
+        map(name => ({ title: name || '' })),
       );
 
   }
@@ -107,25 +105,6 @@ export class ProductsListComponent implements OnInit {
           };
 
         }));
-
-  }
-
-  private getPagination(): Observable<Pagination> {
-
-    return combineLatest([
-      this.productService.getTotalCount$(),
-      this.routerState.getQueryParam$('offset').pipe(map(qp => +(qp ?? 0))),
-      this.routerState.getQueryParam$('limit').pipe(map(qp => +(qp ?? this.paginationLimit))),
-    ]).pipe(map(([total, start, rows]) => {
-
-      return {
-        index: start / rows,
-        offset: start,
-        limit: rows,
-        count: total,
-      };
-
-    }));
 
   }
 
@@ -183,8 +162,16 @@ export class ProductsListComponent implements OnInit {
 
   public pageChangeEvent(event: PageEvent): void {
 
-    this.onPaginationUpdate({ pageIndex: event.pageIndex, pageSize: event.pageSize });
+    if (event.previousPageIndex === event.pageIndex) {
+      this.onPaginationLimitUpdate(event.pageSize);
+    } else {
+      this.onPaginationUpdate({ pageSize: event.pageSize, pageIndex: event.pageIndex});
+    }
 
+  }
+
+  public getTotalCount(): Observable<number> {
+    return this.productService.getTotalCount$();
   }
 
   private updateParams(params: Params): void {
@@ -195,6 +182,23 @@ export class ProductsListComponent implements OnInit {
         queryParamsHandling: 'merge',
         relativeTo: this.route,
       });
+
+  }
+
+  private getPagination(): Observable<Pagination> {
+
+    return this.routerState.getQueryParams$().pipe(map(queryParams => {
+
+      const offset = +(queryParams.offset ?? 0);
+      const limit = +(queryParams.limit ?? this.paginationLimit);
+
+      return {
+        index: offset / limit,
+        offset,
+        limit,
+      };
+
+    }));
 
   }
 

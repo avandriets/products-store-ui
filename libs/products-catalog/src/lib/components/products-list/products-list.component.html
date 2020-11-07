@@ -28,11 +28,16 @@
           {{ product.title }}
         </p>
 
-        <mat-paginator [length]="data.pagination.count"
-                       [pageSize]="paginationLimit"
-                       [pageSizeOptions]="paginationLimits"
-                       (page)="pageChangeEvent($event)">
-        </mat-paginator>
+        <ng-container *ngIf="pagination$ | async as pagination">
+
+          <mat-paginator [pageIndex]="pagination.index"
+                         [length]="getTotalCount() | async"
+                         [pageSize]="pagination.limit"
+                         [pageSizeOptions]="paginationLimits"
+                         (page)="pageChangeEvent($event)">
+          </mat-paginator>
+
+        </ng-container>
 
       </ng-template>
 

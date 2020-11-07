@@ -1,3 +1,4 @@
 export interface ProductFilter {
-  name?: string;
+  title?: string;
+  description?: string;
 }
