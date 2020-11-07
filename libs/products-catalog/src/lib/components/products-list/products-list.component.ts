@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { MergeStrategy } from '@ngrx/data';
 import { Product, ProductService } from '@products-store-ui/products-catalog-store';
@@ -13,8 +15,9 @@ import {
   removeFalsyValues,
   replaceFalsyValuesWithNull,
 } from '@products-store-ui/products-core';
+import isEqualWith from 'lodash.isequalwith';
 import { Observable, combineLatest } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 
 import { ProductFilter } from '../../interfaces';
 
@@ -23,7 +26,9 @@ import { ProductFilter } from '../../interfaces';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss'],
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, AfterViewInit {
+
+  @ViewChild(MatSort) public sort: MatSort;
 
   public products$: Observable<Product[]>;
   public status$!: Observable<Status>;
@@ -32,8 +37,11 @@ export class ProductsListComponent implements OnInit {
   public pagination$!: Observable<Pagination>;
   public filter$!: Observable<ProductFilter>;
 
-  public paginationLimit = 1;
-  public paginationLimits = [1, 10, 25, 50];
+  public paginationLimit = 5;
+  public paginationLimits = [5, 10, 25, 50];
+
+  public displayedColumns: string[] = ['title', 'description'];
+  public dataSource = new MatTableDataSource([]);
 
   public constructor(
     private readonly route: ActivatedRoute,
@@ -58,6 +66,7 @@ export class ProductsListComponent implements OnInit {
         this.pagination$,
       ],
     ).pipe(
+      distinctUntilChanged(isEqualWith),
       map(([_, filterContent, sorting, pagination]) =>
         removeFalsyValues({
           q: filterContent.title,
@@ -76,35 +85,9 @@ export class ProductsListComponent implements OnInit {
 
   }
 
-  private getFilter(): Observable<ProductFilter> {
+  public ngAfterViewInit(): void {
 
-    return this.routerState.getQueryParam$('name')
-      .pipe(
-        map(name => ({ title: name || '' })),
-      );
-
-  }
-
-  private getSorting(): Observable<SortingParam> {
-
-    return combineLatest(
-      [
-        this.routerState.getQueryParam$('sort_field'),
-        this.routerState.getQueryParam$('sort'),
-      ],
-    )
-      .pipe(
-        map(([sort_field, sort]) => {
-
-          const field = sort_field || 'title';
-          const direction = <SortingDirection> sort || 'desc';
-
-          return {
-            field,
-            direction,
-          };
-
-        }));
+    this.dataSource.sort = this.sort;
 
   }
 
@@ -119,9 +102,6 @@ export class ProductsListComponent implements OnInit {
 
   }
 
-  /**
-   * On Pagination Update.
-   */
   public onPaginationUpdate(pageEvent: { pageIndex: number; pageSize: number; }): void {
 
     const params = {
@@ -144,16 +124,13 @@ export class ProductsListComponent implements OnInit {
 
   }
 
-  public onSortingClick(sorting: SortingParam, field: string): void {
+  public onSortingClick(event: Sort): void {
 
-    const direction =
-      sorting.field === field && sorting.direction === 'asc'
-        ? 'desc'
-        : 'asc';
+    const { active, direction } = event;
 
     const params = {
-      sort_field: field,
-      sort: direction,
+      sort_field: direction ? active : null,
+      sort: direction ?? null,
     };
 
     this.updateParams(params);
@@ -165,7 +142,7 @@ export class ProductsListComponent implements OnInit {
     if (event.previousPageIndex === event.pageIndex) {
       this.onPaginationLimitUpdate(event.pageSize);
     } else {
-      this.onPaginationUpdate({ pageSize: event.pageSize, pageIndex: event.pageIndex});
+      this.onPaginationUpdate({ pageSize: event.pageSize, pageIndex: event.pageIndex });
     }
 
   }
@@ -187,18 +164,43 @@ export class ProductsListComponent implements OnInit {
 
   private getPagination(): Observable<Pagination> {
 
-    return this.routerState.getQueryParams$().pipe(map(queryParams => {
+    return this.routerState.getQueryParams$().pipe(
+      map(queryParams => {
 
-      const offset = +(queryParams.offset ?? 0);
-      const limit = +(queryParams.limit ?? this.paginationLimit);
+        const offset = +(queryParams.offset ?? 0);
+        const limit = +(queryParams.limit ?? this.paginationLimit);
 
-      return {
-        index: offset / limit,
-        offset,
-        limit,
-      };
+        return {
+          index: offset / limit,
+          offset,
+          limit,
+        };
 
-    }));
+      }));
+
+  }
+
+  private getFilter(): Observable<ProductFilter> {
+
+    return this.routerState.getQueryParam$('name')
+      .pipe(
+        map(name => ({ title: name || '' })),
+      );
+
+  }
+
+  private getSorting(): Observable<SortingParam> {
+
+    return this.routerState.getQueryParams$()
+      .pipe(
+        map(queryParams => {
+
+          const field = queryParams.sort_field ?? 'title';
+          const direction = <SortingDirection> queryParams.sort ?? 'desc';
+
+          return { field, direction };
+
+        }));
 
   }
 

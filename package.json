@@ -49,6 +49,7 @@
     "@ngx-loading-bar/core": "^5.0.2",
     "@ngx-loading-bar/http-client": "^5.0.2",
     "@nrwl/angular": "9.5.1",
+    "lodash.isequalwith": "^4.4.0",
     "lodash.pickby": "^4.6.0",
     "ngx-toastr": "^12.1.0",
     "oidc-client": "^1.10.1",
