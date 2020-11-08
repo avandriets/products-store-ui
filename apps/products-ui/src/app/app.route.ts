@@ -27,6 +27,11 @@ export const routes: Routes = [
         redirectTo: 'catalog',
       },
       {
+        path: 'catalog',
+        loadChildren: async () => import('../../../../libs/products-dashboard/src/lib/products-dashboard.module').then(m => m.ProductsDashboardModule),
+        data: { preload: true },
+      },
+      {
         path: 'catalog/dictionaries',
         redirectTo: 'catalog/dictionaries/products',
         pathMatch: 'full',
@@ -38,7 +43,7 @@ export const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '/',
+        redirectTo: 'catalog',
         pathMatch: 'full',
       },
     ],

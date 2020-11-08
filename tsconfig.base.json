@@ -27,6 +27,9 @@
       ],
       "@products-store-ui/products-catalog-store": [
         "libs/products-catalog-store/src/index.ts"
+      ],
+      "@products-store-ui/products-dashboard": [
+        "libs/products-dashboard/src/index.ts"
       ]
     }
   },

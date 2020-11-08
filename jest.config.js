@@ -7,5 +7,6 @@ module.exports = {
     '<rootDir>/libs/configuration',
     '<rootDir>/libs/products-catalog',
     '<rootDir>/libs/products-catalog-store',
+    '<rootDir>/libs/products-dashboard',
   ],
 };

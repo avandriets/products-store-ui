@@ -43,6 +43,9 @@
     },
     "products-catalog-store": {
       "tags": []
+    },
+    "products-dashboard": {
+      "tags": []
     }
   },
   "affected": {

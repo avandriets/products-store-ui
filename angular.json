@@ -308,6 +308,36 @@
           "style": "scss"
         }
       }
+    },
+    "products-dashboard": {
+      "projectType": "library",
+      "root": "libs/products-dashboard",
+      "sourceRoot": "libs/products-dashboard/src",
+      "prefix": "products-store-ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products-dashboard/tsconfig.lib.json",
+              "libs/products-dashboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/products-dashboard/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/products-dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
