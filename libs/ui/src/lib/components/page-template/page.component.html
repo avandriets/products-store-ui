@@ -1,18 +1,22 @@
 <div *ngIf="header"
-     class="products-store-ui-page-template-header">
+     fxLayout="row"
+     fxLayoutAlign="space-between end" class="pb-8">
 
-  <div class="products-store-ui-page-template-header-primary">
+  <div>
     <ng-content select="[breadcrumb]"></ng-content>
-    <ng-content select="[title]"></ng-content>
-    <ng-content select="[back]"></ng-content>
+    <div fxLayout="row"
+         fxLayoutAlign="start center">
+      <ng-content select="[back]"></ng-content>
+      <ng-content select="[title]"></ng-content>
+    </div>
   </div>
 
-  <div class="products-store-ui-page-template-header-secondary">
+  <div>
     <ng-content select="[action]"></ng-content>
   </div>
 
 </div>
 
-<div class="products-store-ui-page-template-body">
+<div>
   <ng-content select="[body]"></ng-content>
 </div>

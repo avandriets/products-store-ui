@@ -1,7 +1,24 @@
 <products-store-ui-page-template *ngIf="{ status: status$ | async, product: product$ | async } as data">
 
   <ng-container title>
-    <h2>{{ data.product?.title }}</h2>
+
+    <div>
+      {{ isNewObject ? 'New Product' : data.product?.title }}
+    </div>
+
+  </ng-container>
+
+  <ng-container back>
+
+    <a mat-icon-button
+       [routerLink]="['/']">
+      <mat-icon>arrow_left</mat-icon>
+    </a>
+
+  </ng-container>
+
+  <ng-container breadcrumb>
+    <span>Breadcrumbs</span>
   </ng-container>
 
   <ng-container action>
@@ -9,7 +26,12 @@
     <div *ngIf="!isNewObject"
          fxLayout="row"
          fxLayoutAlign="end center">
-      <button mat-stroked-button color="warn" (click)="onDelete()">
+      <button mat-stroked-button
+              color="warn"
+              (click)="onDelete()">
+        <mat-icon aria-label="Delete">
+          delete
+        </mat-icon>
         Delete
       </button>
     </div>
@@ -30,9 +52,12 @@
                 [formGroup]="form"
                 class="model-form">
 
-            <h2 class="uk-card-title">
+            <div class="mat-h3">
+              <mat-icon>
+                description
+              </mat-icon>
               Product Details
-            </h2>
+            </div>
 
             <div fxLayout="row"
                  fxLayoutAlign="center start">
@@ -86,6 +111,9 @@
                       color="primary"
                       [disabled]="!form.valid || data.status.pending"
                       (click)="onSave()">
+                <mat-icon aria-label="Save">
+                  save
+                </mat-icon>
                 Save
               </button>
             </div>
