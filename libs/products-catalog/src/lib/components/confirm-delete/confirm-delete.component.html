@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Delete product?</h1>
+
+<div mat-dialog-content>
+  <p>Do you want to delete product?</p>
+</div>
+
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end start">
+
+  <button mat-raised-button (click)="onCancel()">
+    Cancel
+  </button>
+
+  <button mat-raised-button
+          cdkFocusInitial
+          color="primary"
+          [mat-dialog-close]="data.product.id">
+    Ok
+  </button>
+
+</div>

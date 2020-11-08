@@ -10,21 +10,12 @@ import { map } from 'rxjs/operators';
 })
 export class MainErrorContainerComponent implements OnInit {
 
-  /**
-   * Holds type.
-   */
   public type$!: Observable<string | null>;
 
-  /**
-   * Constructor.
-   */
   public constructor(
     private route: ActivatedRoute,
   ) { }
 
-  /**
-   * On Init.
-   */
   public ngOnInit(): void {
 
     this.type$ = this.route.queryParams.pipe(

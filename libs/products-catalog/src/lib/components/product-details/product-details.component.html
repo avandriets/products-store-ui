@@ -9,7 +9,7 @@
     <div *ngIf="!isNewObject"
          fxLayout="row"
          fxLayoutAlign="end center">
-      <button mat-stroked-button color="warn">
+      <button mat-stroked-button color="warn" (click)="onDelete()">
         Delete
       </button>
     </div>

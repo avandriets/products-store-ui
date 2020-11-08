@@ -6,7 +6,11 @@ import { ProductsCatalogStoreModule } from '@products-store-ui/products-catalog-
 import { ProductsCoreModule } from '@products-store-ui/products-core';
 import { UiModule } from '@products-store-ui/ui';
 
-import { ProductDetailsComponent, ProductsListComponent } from './components';
+import {
+  ConfirmDeleteComponent,
+  ProductDetailsComponent,
+  ProductsListComponent,
+} from './components';
 import { routes } from './products-catalog.route';
 
 @NgModule({
@@ -26,6 +30,7 @@ import { routes } from './products-catalog.route';
   declarations: [
     ProductsListComponent,
     ProductDetailsComponent,
+    ConfirmDeleteComponent,
   ],
 })
 export class ProductsCatalogModule {

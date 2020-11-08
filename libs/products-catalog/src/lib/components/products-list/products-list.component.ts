@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { ActivatedRoute } from '@angular/router';
@@ -19,6 +20,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 
 import { ProductFilter } from '../../interfaces';
+import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component';
 
 @Component({
   selector: 'products-store-ui-products-list',
@@ -39,12 +41,13 @@ export class ProductsListComponent implements OnInit {
   public paginationLimit = 5;
   public paginationLimits = [5, 10, 25, 50];
 
-  public displayedColumns: string[] = ['title', 'description'];
+  public displayedColumns: string[] = ['title', 'description', '_id'];
 
   public constructor(
     private readonly route: ActivatedRoute,
     private readonly productService: ProductService,
     private readonly routerState: RouterStateService,
+    private readonly dialog: MatDialog,
   ) {
   }
 
@@ -141,6 +144,21 @@ export class ProductsListComponent implements OnInit {
 
   public getTotalCount(): Observable<number> {
     return this.productService.getTotalCount$();
+  }
+
+  public onDelete(product: Product): void {
+
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '400px',
+      data: { product },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.productService.delete(product);
+      }
+    });
+
   }
 
   private updateParams(params: Params): void {

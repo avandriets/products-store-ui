@@ -64,9 +64,6 @@ export class NotificationEffects {
     { dispatch: false },
   );
 
-  /**
-   * Handle Warning.
-   */
   public handleWarning$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
