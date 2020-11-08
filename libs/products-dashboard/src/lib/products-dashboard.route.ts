@@ -1,3 +1,4 @@
+import { Routes } from '@angular/router';
 import { RoutePathWrapperComponent } from '@products-store-ui/ui';
 
 import { DashboardComponent } from './components';
