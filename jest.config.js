@@ -1,9 +1,11 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest',
-  },
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html'],
+  projects: [
+    '<rootDir>/apps/products-ui',
+    '<rootDir>/libs/ui',
+    '<rootDir>/libs/products-auth',
+    '<rootDir>/libs/products-core',
+    '<rootDir>/libs/configuration',
+    '<rootDir>/libs/products-catalog',
+    '<rootDir>/libs/products-catalog-store',
+  ],
 };
