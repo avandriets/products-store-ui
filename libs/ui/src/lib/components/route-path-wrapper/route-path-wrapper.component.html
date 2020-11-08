@@ -1,8 +1,8 @@
 <div fxFlexFill>
   <div *ngIf="leftSideBar$ | async"
-        fxLayout="column"
-        [fxFlex]="(isAsideCollapsed$ | async) ? '200px' : '64px'"
-        class="left-side-panel">
+       fxLayout="column"
+       class="left-side-panel"
+       [fxFlex]="(isAsideCollapsed$ | async) ? '64px' : '200px' ">
 
     <router-outlet name="leftSideBar">
     </router-outlet>
@@ -16,21 +16,21 @@
       <div fxLayoutAlign="end">
 
         <button *ngSwitchCase="true"
-          mat-icon-button
-          (click)="expandAside()">
+                mat-icon-button
+                (click)="expandAside()">
 
           <mat-icon>
-            keyboard_arrow_left
+            keyboard_arrow_right
           </mat-icon>
 
         </button>
 
         <button *ngSwitchDefault
-          mat-icon-button
-          (click)="collapseAside()">
+                mat-icon-button
+                (click)="collapseAside()">
 
           <mat-icon>
-            keyboard_arrow_right
+            keyboard_arrow_left
           </mat-icon>
 
         </button>

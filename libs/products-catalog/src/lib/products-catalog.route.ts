@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
-import { RoutePathWrapperComponent } from '@products-store-ui/ui';
+import {
+  LeftSidebarDictionariesComponent,
+  RoutePathWrapperComponent,
+} from '@products-store-ui/ui';
 
 import { ProductDetailsComponent, ProductsListComponent } from './components';
 
@@ -8,9 +11,14 @@ export const routes: Routes = [
     path: '',
     component: RoutePathWrapperComponent,
     data: {
-      leftSideBar: false,
+      leftSideBar: true,
     },
     children: [
+      {
+        path: '',
+        component: LeftSidebarDictionariesComponent,
+        outlet: 'leftSideBar',
+      },
       {
         path: '',
         component: ProductsListComponent,

@@ -1,0 +1,26 @@
+<div *ngIf="{ expanded: expanded$ | async } as data">
+  <mat-nav-list>
+
+    <mat-list-item mat-subheader (click)="onHeaderClick(data.expanded)">
+      <span *ngIf="data.expanded; else expandedHeader">Dictionaries</span>
+      <ng-template #expandedHeader>
+        <mat-icon mat-list-icon>dynamic_feed</mat-icon>
+      </ng-template>
+    </mat-list-item>
+
+    <mat-list-item>
+      <a matLine
+         *ngIf="data.expanded; else expandedProducts;"
+         [routerLink]="['/products']">
+        Products
+      </a>
+      <ng-template #expandedProducts>
+        <a mat-icon-button
+           [routerLink]="['/products']">
+          <mat-icon>description</mat-icon>
+        </a>
+      </ng-template>
+    </mat-list-item>
+
+  </mat-nav-list>
+</div>
