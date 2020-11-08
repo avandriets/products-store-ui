@@ -20,12 +20,12 @@ export class LeftSidebarDictionariesComponent implements OnInit {
     this.expanded$ = this.state.isAsideExpanded$();
   }
 
-  public onHeaderClick(collapsed: boolean): void {
+  public onHeaderClick(expanded: boolean): void {
 
-    if (collapsed) {
-      this.state.expandAside();
-    } else {
+    if (expanded) {
       this.state.collapseAside();
+    } else {
+      this.state.expandAside();
     }
 
   }

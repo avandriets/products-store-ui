@@ -21,7 +21,7 @@ export class ProductEffects {
       switchMap(action => of(action.payload.data)),
       switchMap(product => ([
         RouterActions.navigate({
-          path: ['products', product.id],
+          path: ['catalog', 'dictionaries', 'products', product.id],
           extras: {
             queryParamsHandling: 'merge',
           },
@@ -39,7 +39,7 @@ export class ProductEffects {
       ofEntityOp(EntityOp.SAVE_DELETE_ONE_SUCCESS),
       switchMap(() => ([
         RouterActions.navigate({
-          path: ['products'],
+          path: ['catalog', 'dictionaries', 'products'],
           extras: {
             queryParamsHandling: 'merge',
           },

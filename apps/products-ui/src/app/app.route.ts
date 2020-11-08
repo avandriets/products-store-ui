@@ -24,10 +24,15 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'products',
+        redirectTo: 'catalog',
       },
       {
-        path: 'products',
+        path: 'catalog/dictionaries',
+        redirectTo: 'catalog/dictionaries/products',
+        pathMatch: 'full',
+      },
+      {
+        path: 'catalog/dictionaries/products',
         loadChildren: async () => import('../../../../libs/products-catalog/src/lib/products-catalog.module').then(m => m.ProductsCatalogModule),
         data: { preload: true },
       },

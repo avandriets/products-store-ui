@@ -2,10 +2,25 @@
 
   <mat-toolbar-row>
 
-    <span class="page-title"
-          (click)="onTitle()">
-      Product Catalog
-    </span>
+    <div fxLayout
+         fxLayoutGap="20px">
+
+      <span class="page-title"
+                (click)="onTitle()">
+        Product Catalog
+      </span>
+
+      <span class="page-title"
+            (click)="onDocClick()">
+        Documents
+      </span>
+
+      <span class="page-title"
+            (click)="onDictionariesClick()">
+        Dictionaries
+      </span>
+
+    </div>
 
     <div fxFlex
          fxLayout

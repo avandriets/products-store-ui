@@ -34,4 +34,12 @@ export class MainHeaderComponent {
     this.auth.login();
   }
 
+  public onDocClick(): void {
+    this.router.navigate(['/catalog/documents']);
+  }
+
+  public onDictionariesClick(): void {
+    this.router.navigate(['/catalog/dictionaries']);
+  }
+
 }
