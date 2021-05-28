@@ -22,8 +22,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { ConfigurationModule } from '@products-store-ui/configuration';
+import { ConfigService, ConfigurationModule } from '@products-store-ui/configuration';
+import { AuthService } from '@products-store-ui/products-auth';
 
+import { MessagingService, SOCKET, SocketFactory } from './services';
 import { reducers } from './store/reducers';
 import { states } from './store/states';
 
@@ -88,7 +90,9 @@ export class ProductsCoreModule {
       ngModule: ProductsCoreModule,
       providers: [
 
+        { provide: SOCKET, useFactory: SocketFactory, deps: [AuthService, ConfigService] },
         ...states,
+        MessagingService,
       ],
     };
 

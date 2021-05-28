@@ -54,6 +54,7 @@
     "ngx-toastr": "^13.1.0",
     "oidc-client": "^1.10.1",
     "rxjs": "^6.6.3",
+    "socket.io-client": "^2.3.1",
     "store2": "^2.11.2",
     "zone.js": "^0.10.2"
   },

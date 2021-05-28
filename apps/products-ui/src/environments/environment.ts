@@ -8,6 +8,7 @@ export const environment = {
   keyCloakRealm: 'PRODUCTS',
   keyClientId: 'products-app',
   apiURL: 'http://localhost:3000',
+  socketURL: 'http://localhost:3000',
 };
 
  // * For easier debugging in development mode, you can import the following file

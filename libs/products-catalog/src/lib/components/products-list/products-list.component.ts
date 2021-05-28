@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MergeStrategy } from '@ngrx/data';
 import { Product, ProductService } from '@products-store-ui/products-catalog-store';
 import {
+  MessagingService,
   Pagination,
   Params,
   RouterStateService,
@@ -48,10 +49,16 @@ export class ProductsListComponent implements OnInit {
     private readonly productService: ProductService,
     private readonly routerState: RouterStateService,
     private readonly dialog: MatDialog,
+    private readonly messagingService: MessagingService,
   ) {
   }
 
   public ngOnInit(): void {
+
+    this.messagingService.getNewMessage('serverEvent').subscribe(
+      data => {
+        console.log('### message from server ###:', data);
+      });
 
     this.status$ = this.productService.status$;
 

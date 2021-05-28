@@ -6,3 +6,4 @@ export * from './lib/store/states';
 export * from './lib/store/data';
 export * from './lib/interfaces';
 export * from './lib/utils';
+export * from './lib/services';
