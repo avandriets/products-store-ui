@@ -7,6 +7,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { ProductsCoreModule } from '@products-store-ui/products-core';
 
 import { components } from './components';
+import { directives } from './directives';
 import { services } from './services';
 import { effects } from './stores/effects';
 import { reducers } from './stores/reducers';
@@ -24,9 +25,11 @@ import { reducers } from './stores/reducers';
   ],
   declarations: [
     ...components,
+    ...directives,
   ],
   exports: [
     ...components,
+    ...directives,
   ],
   providers: [
     ...services,
